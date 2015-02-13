@@ -1,0 +1,102 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+   <RelativeLayout
+       android:id="@+id/login_div"
+       android:layout_width="fill_parent"
+       android:layout_height="wrap_content"
+       android:layout_alignParentTop="true"
+       android:layout_centerHorizontal="true"
+       android:layout_margin="20dip"
+       android:layout_marginTop="22dp"
+       android:padding="20dip" >
+
+       <EditText
+           android:id="@+id/password_edit"
+           android:layout_width="fill_parent"
+           android:layout_height="wrap_content"
+           android:layout_below="@+id/login_password_input"
+           android:layout_centerHorizontal="true"
+           android:ems="10"
+           android:inputType="textPassword"
+           android:singleLine="true" />
+
+       <TextView
+           android:id="@+id/login_password_input"
+           style="@style/normalText"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:layout_alignLeft="@+id/password_edit"
+           android:layout_below="@+id/username_edit"
+           android:text="@string/password" />
+
+       <Button
+           android:id="@+id/signin_btn"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:layout_alignRight="@+id/password_edit"
+           android:layout_below="@+id/password_edit"
+           android:text="@string/login" />
+
+       <ImageView
+           android:id="@+id/logo"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:layout_alignParentTop="true"
+           android:layout_centerHorizontal="true"
+           android:src="@drawable/ic_launcher" />
+
+       <EditText
+           android:id="@+id/username_edit"
+           android:layout_width="fill_parent"
+           android:layout_height="wrap_content"
+           android:layout_alignParentRight="true"
+           android:layout_below="@+id/login_user_input"
+           android:ems="10"
+           android:hint="@string/username_input_hint"
+           android:inputType="text"
+           android:singleLine="true" >
+
+           <requestFocus />
+       </EditText>
+
+       <TextView
+           android:id="@+id/login_user_input"
+           style="@style/normalText"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:layout_alignLeft="@+id/username_edit"
+           android:layout_below="@+id/logo"
+           android:text="@string/username" />
+
+   </RelativeLayout>
+
+   <Button
+       android:id="@+id/qqLogin"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:layout_alignLeft="@+id/login_div"
+       android:layout_below="@+id/login_div"
+       android:layout_marginLeft="45dp"
+       android:text="QQ登陆" />
+
+   <Button
+       android:id="@+id/qqCancel"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:layout_below="@+id/login_div"
+       android:layout_marginLeft="36dp"
+       android:layout_toRightOf="@+id/qqLogin"
+       android:text="QQ注销" />
+
+   <TextView
+       android:id="@+id/message"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:layout_below="@+id/qqLogin"
+       android:layout_marginTop="37dp"
+       android:layout_toLeftOf="@+id/qqCancel"
+       android:text="登录状态" />
+	
+</RelativeLayout>
