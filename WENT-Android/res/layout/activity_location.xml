@@ -43,6 +43,9 @@
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_alignTop="@+id/user"
+        android:layout_marginLeft="@dimen/user_window_horizontal_margin"
+        android:layout_marginRight="@dimen/user_window_horizontal_margin"
+        android:layout_marginTop="@dimen/user_window_vertical_margin"
         layout="@layout/user_tiny_window" />
 
 </RelativeLayout>

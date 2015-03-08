@@ -7,6 +7,9 @@ import went.util.BlurUtil;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Point;
@@ -145,6 +148,48 @@ public class MapActivity extends Activity
          
          userWindow = (RelativeLayout ) findViewById(R.id.user_tiny_window);
          
+         userWindow.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				userWindow.setVisibility(View.GONE);
+				final Context contxt = MapActivity.this;
+				AlertDialog.Builder builder = new AlertDialog.Builder(contxt);
+				LayoutInflater inflater =
+						(LayoutInflater) contxt.getSystemService(LAYOUT_INFLATER_SERVICE);
+				final View layout = inflater.inflate(R.layout.user_menu_window,
+						(ViewGroup) findViewById(R.id.dialogRootView));
+				builder.setView(layout);
+				final Bitmap origin = BlurUtil.takeScreenShot(MapActivity.this);
+				
+				ViewTreeObserver vto = layout.getViewTreeObserver();
+				vto.addOnGlobalLayoutListener(new OnGlobalLayoutListener() {
+					@Override
+					public void onGlobalLayout() {
+						layout.getViewTreeObserver().removeGlobalOnLayoutListener(this);
+						DisplayMetrics dm = new DisplayMetrics();
+						getWindowManager().getDefaultDisplay().getMetrics(dm);
+						
+						int w = layout.getWidth();
+						int h = layout.getHeight();
+						Bitmap background = BlurUtil.fastblur(contxt,
+								Bitmap.createBitmap(origin,
+										(int )(dm.widthPixels / 2.0 - w / 2.0),
+										(int )(dm.heightPixels / 2.0 - h / 2.0),w, h),
+								25);//0-25模糊值
+						layout.setBackground(new BitmapDrawable(background));
+					}
+				});
+				
+				builder.setOnDismissListener(new OnDismissListener() {
+					@Override
+					public void onDismiss(DialogInterface arg0) {
+						userWindow.setVisibility(View.VISIBLE);
+					}
+				});
+			}
+         });
+         
+        // get height & width
 		int wm = View.MeasureSpec.makeMeasureSpec(0,
 				View.MeasureSpec.UNSPECIFIED);
 		int hm = View.MeasureSpec.makeMeasureSpec(0,
@@ -169,7 +214,7 @@ public class MapActivity extends Activity
          baiduMap.setOnMapStatusChangeListener(new OnMapStatusChangeListener() {
 			@Override
 			public void onMapStatusChange(MapStatus arg0) {
-				baiduMap.snapshot(blurifyWindow);
+				//baiduMap.snapshot(blurifyWindow);
 			}
 
 			@Override

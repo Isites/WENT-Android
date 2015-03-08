@@ -15,6 +15,8 @@ public final class R {
          */
         public static final int activity_horizontal_margin=0x7f050000;
         public static final int activity_vertical_margin=0x7f050001;
+        public static final int user_window_horizontal_margin=0x7f050003;
+        public static final int user_window_vertical_margin=0x7f050002;
     }
     public static final class drawable {
         public static final int back_btn=0x7f020000;
@@ -32,6 +34,16 @@ public final class R {
         public static final int point_yxz=0x7f02000c;
     }
     public static final class id {
+        public static final int ImageView01=0x7f08001f;
+        public static final int ImageView02=0x7f08001d;
+        public static final int ImageView03=0x7f080027;
+        public static final int ImageView04=0x7f080025;
+        public static final int ImageView05=0x7f080023;
+        public static final int TextView01=0x7f080020;
+        public static final int TextView02=0x7f08001e;
+        public static final int TextView03=0x7f080028;
+        public static final int TextView04=0x7f080026;
+        public static final int TextView05=0x7f080024;
         public static final int about_=0x7f080000;
         public static final int about_btn=0x7f080014;
         public static final int add_btn=0x7f080011;
@@ -39,12 +51,16 @@ public final class R {
         public static final int back_center=0x7f080004;
         public static final int build=0x7f080016;
         public static final int collect=0x7f080015;
-        public static final int dialogRootView=0x7f080018;
-        public static final int imageView1=0x7f08001e;
-        public static final int infoTxtView=0x7f080019;
-        public static final int launch=0x7f08001a;
-        public static final int linearLayout3=0x7f08001d;
-        public static final int linearlayout=0x7f08001c;
+        public static final int dialogRootView=0x7f080019;
+        public static final int imageView1=0x7f080021;
+        public static final int imageView2=0x7f08002c;
+        public static final int imageView3=0x7f08002d;
+        public static final int infoTxtView=0x7f08001a;
+        public static final int launch=0x7f080018;
+        public static final int linearLayout1=0x7f08002a;
+        public static final int linearLayout2=0x7f080029;
+        public static final int linearLayout3=0x7f08002e;
+        public static final int linearlayout=0x7f08001b;
         public static final int login_btn=0x7f080013;
         public static final int login_div=0x7f080007;
         public static final int login_password_input=0x7f080009;
@@ -55,16 +71,18 @@ public final class R {
         public static final int message=0x7f080010;
         public static final int ope_detail=0x7f080005;
         public static final int password_edit=0x7f080008;
-        public static final int progressBar1=0x7f080022;
-        public static final int progressBar2=0x7f080023;
+        public static final int progressBar1=0x7f080032;
+        public static final int progressBar2=0x7f080033;
         public static final int qqCancel=0x7f08000f;
         public static final int qqLogin=0x7f08000e;
-        public static final int relativeLayout1=0x7f08001b;
+        public static final int relativeLayout1=0x7f08001c;
         public static final int signin_btn=0x7f08000b;
         public static final int stats_txt=0x7f080001;
-        public static final int textView2=0x7f08001f;
-        public static final int textView3=0x7f080021;
-        public static final int textView5=0x7f080020;
+        public static final int textView1=0x7f080022;
+        public static final int textView2=0x7f08002f;
+        public static final int textView3=0x7f080031;
+        public static final int textView4=0x7f08002b;
+        public static final int textView5=0x7f080030;
         public static final int user=0x7f080003;
         public static final int user_tiny_window=0x7f080006;
         public static final int username_edit=0x7f08000a;
@@ -79,10 +97,10 @@ public final class R {
         public static final int activity_mine=0x7f030006;
         public static final int activity_setting_off=0x7f030007;
         public static final int attack_detail=0x7f030008;
-        public static final int dialog_info=0x7f030009;
-        public static final int launch=0x7f03000a;
-        public static final int pedestrian_dialog=0x7f03000b;
-        public static final int tower_dialog=0x7f03000c;
+        public static final int launch=0x7f030009;
+        public static final int pedestrian_dialog=0x7f03000a;
+        public static final int tower_dialog=0x7f03000b;
+        public static final int user_menu_window=0x7f03000c;
         public static final int user_tiny_window=0x7f03000d;
     }
     public static final class raw {
