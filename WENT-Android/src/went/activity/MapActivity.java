@@ -76,7 +76,7 @@ public class MapActivity extends Activity
 	ImageButton backBtn, attackBtn, buildBtn, collectBtn, userBtn;
 	RelativeLayout opeDetailRellay;
 	RelativeLayout userWindow;
-	int userWindow_x, userWindow_y, userWindow_w, userWindow_h;
+	//int userWindow_x, userWindow_y, userWindow_w, userWindow_h;
 	
 	boolean isFirstLoc = true, isFirstGetBase = true, isAttack = false;
 	//save the user current latlng and the base's latlng need to operate
@@ -147,6 +147,7 @@ public class MapActivity extends Activity
          baiduMap.animateMapStatus(u, 1000);
          
          userWindow = (RelativeLayout ) findViewById(R.id.user_tiny_window);
+         userWindow.setAlpha((float) 0.7);
          
          userWindow.setOnClickListener(new OnClickListener() {
 			@Override
@@ -158,8 +159,9 @@ public class MapActivity extends Activity
 						(LayoutInflater) contxt.getSystemService(LAYOUT_INFLATER_SERVICE);
 				final View layout = inflater.inflate(R.layout.user_menu_window,
 						(ViewGroup) findViewById(R.id.dialogRootView));
+				layout.getBackground().setAlpha(179);
 				builder.setView(layout);
-				final Bitmap origin = BlurUtil.takeScreenShot(MapActivity.this);
+				/*final Bitmap origin = BlurUtil.takeScreenShot(MapActivity.this);
 				
 				ViewTreeObserver vto = layout.getViewTreeObserver();
 				vto.addOnGlobalLayoutListener(new OnGlobalLayoutListener() {
@@ -179,16 +181,17 @@ public class MapActivity extends Activity
 						layout.setBackground(new BitmapDrawable(background));
 					}
 				});
-				
+				*/
 				builder.setOnDismissListener(new OnDismissListener() {
 					@Override
 					public void onDismiss(DialogInterface arg0) {
 						userWindow.setVisibility(View.VISIBLE);
 					}
 				});
+				builder.show();
 			}
          });
-         
+         /*
         // get height & width
 		int wm = View.MeasureSpec.makeMeasureSpec(0,
 				View.MeasureSpec.UNSPECIFIED);
@@ -226,9 +229,10 @@ public class MapActivity extends Activity
 			public void onMapStatusChangeStart(MapStatus arg0) {
 				//baiduMap.snapshot(blurifyWindow);
 			}
-         });
+         });*/
 	}
 	
+	/*
 	SnapshotReadyCallback blurifyWindow = new SnapshotReadyCallback() {
 		@SuppressLint("NewApi")
 		@Override
@@ -240,7 +244,7 @@ public class MapActivity extends Activity
 					25);//0-25模糊值
 			userWindow.setBackground(new BitmapDrawable(background));
 		}
-	};
+	};*/
 	
 	/*
 	 * get the button, set the button click listener
