@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <ImageButton 
+        android:id="@+id/collect"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+
+        android:src="@drawable/ic_action_collect"
+        android:background="#00000000"
+        android:padding="10dp"/>   
+    <ImageButton 
+        android:id="@+id/build"
+        android:layout_toLeftOf="@id/collect"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_action_build"
+
+        android:background="#00000000"
+        android:padding="10dp"/>   
+    <ImageButton 
+        android:id="@+id/attack"
+        android:layout_toLeftOf="@id/build"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_action_attack"
+
+        android:background="#00000000"
+        android:padding="10dp" />   
+
+</RelativeLayout>
