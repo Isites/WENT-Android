@@ -11,6 +11,9 @@ import android.os.Bundle;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+import com.easemob.chat.EMContactManager;
+import com.easemob.exceptions.EaseMobException;
+
 //@WindowFeature({Window.FEATURE_NO_TITLE})
 //@EActivity(R.layout.activity_gamestatus)
 public class GameStatusActivity extends Activity {
@@ -27,13 +30,14 @@ public class GameStatusActivity extends Activity {
 	}
 	
 	private List<String> getData() {
-		List<String> data = new ArrayList<String>();
-		data.add("K.Perkins");
-		data.add("K.Garnett");
-		data.add("P.Pierce");
-		data.add("R.Allen");
-		data.add("R.Rondo");
+		List<String> usernames = null;
+		try {
+			usernames = EMContactManager.getInstance().getContactUserNames();
+		} catch (EaseMobException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
-		return data;
+		return usernames;
 	}
 }

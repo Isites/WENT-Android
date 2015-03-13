@@ -11,6 +11,7 @@ import android.util.Log;
 
 import com.baidu.mapapi.SDKInitializer;
 import com.easemob.chat.EMChat;
+import com.easemob.chat.EMChatManager;
 
 public class WentApplication extends Application{
 	Context appContext;
@@ -38,6 +39,8 @@ public class WentApplication extends Application{
 		}
 	        
 		EMChat.getInstance().init(getApplicationContext());
+		//Friend Manager
+		EMChatManager.getInstance().getChatOptions().setUseRoster(true);
 		/**
 		 * debugMode == true 时，sdk 会在log里输入调试信息
 		 * @param debugMode
