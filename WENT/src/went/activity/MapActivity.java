@@ -1,5 +1,7 @@
 package went.activity;
 
+import javax.microedition.khronos.opengles.GL10;
+
 import presenter.MapActivityPresenter;
 import user.MainActivity;
 import view.IMapActivity;
@@ -12,14 +14,18 @@ import android.content.DialogInterface.OnCancelListener;
 import android.content.Intent;
 import android.graphics.Point;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.view.Window;
+import android.view.WindowManager;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.PopupWindow;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.Toast;
@@ -29,12 +35,15 @@ import com.baidu.location.BDLocationListener;
 import com.baidu.location.LocationClient;
 import com.baidu.location.LocationClientOption;
 import com.baidu.mapapi.map.BaiduMap;
+import com.baidu.mapapi.map.BaiduMap.OnMapDrawFrameCallback;
 import com.baidu.mapapi.map.BaiduMap.OnMapLoadedCallback;
 import com.baidu.mapapi.map.BaiduMap.OnMapLongClickListener;
 import com.baidu.mapapi.map.BaiduMap.OnMarkerClickListener;
 import com.baidu.mapapi.map.BaiduMapOptions;
 import com.baidu.mapapi.map.BitmapDescriptor;
 import com.baidu.mapapi.map.BitmapDescriptorFactory;
+import com.baidu.mapapi.map.CircleOptions;
+import com.baidu.mapapi.map.InfoWindow;
 import com.baidu.mapapi.map.MapPoi;
 import com.baidu.mapapi.map.MapStatus;
 import com.baidu.mapapi.map.MapStatusUpdate;
@@ -259,25 +268,53 @@ public class MapActivity extends Activity
 		});
 	}
 	
+	
 	/*
 	 * set the marker click listener
 	 */
 	void setMarkerClick(){
+		
 		baiduMap.setOnMarkerClickListener(new OnMarkerClickListener(){
 			@Override
-			public boolean onMarkerClick(Marker arg0) {
+			public boolean onMarkerClick(final Marker arg0) {
 				//Point p = mBaiduMap.getProjection().toScreenLocation(arg0.getPosition());  
 				toast(isAttack+"");
 				if(isAttack){
 					presenter.attack(arg0.getPosition());
 					isAttack = false;
 				}else{
-					presenter.showTowerInfo(arg0.getPosition());
+					//创建InfoWindow展示的view  
+			        Button button = new Button(getApplicationContext());
+			        button.setOnClickListener(new OnClickListener() {
+						@Override
+						public void onClick(View v) {
+							// placeBeacon(arg)
+							presenter.placeBeacon();
+							
+							//构建用户绘制园形的Option对象  
+							OverlayOptions circleOptions = new CircleOptions()  
+							    .center(arg0.getPosition())
+							    .fillColor(0xAAFFFF00);  
+							//在地图上添加多边形Option，用于显示  
+							baiduMap.addOverlay(circleOptions);
+						}
+			        });
+			        //button.setBackgroundResource(R.drawable.popup);  
+			        //定义用于显示该InfoWindow的坐标点  
+			        //LatLng pt = new LatLng(39.86923, 116.397428);  
+			        //创建InfoWindow , 传入 view， 地理坐标， y 轴偏移量 
+			        InfoWindow mInfoWindow = new InfoWindow(
+			        		button, arg0.getPosition(), -47);  
+			        //显示InfoWindow  
+			        baiduMap.showInfoWindow(mInfoWindow);
+					//presenter.showTowerInfo(arg0.getPosition());
 				}
 				return false;
 			}
 		});		
 	}
+	
+	
 	/*
 	 * map gesture listener, include:long click; click; map loaded call back
 	 */
